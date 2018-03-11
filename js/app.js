@@ -53,10 +53,10 @@ Enemy.prototype.update = function(dt, pause) {
 Enemy.prototype.collision =  function(enemy){
         // check for collision between enemy and player
     if (
-        player.y + 131 >= enemy.y + 90 &&
-        player.x + 25 <= enemy.x + 88 &&
-        player.y + 73 <= enemy.y + 135 &&
-        player.x + 76 >= enemy.x + 11) {
+        player.y + 131 >= this.y + 90 &&
+        player.x + 25 <= this.x + 88 &&
+        player.y + 73 <= this.y + 135 &&
+        player.x + 76 >= this.x + 11) {
         player.x = 202.5;
         player.y = 383;
 
@@ -99,9 +99,9 @@ Player.prototype.checkWinner =  function(){
     // check for player reaching top water-block  and winning the game
     // if player wins, add 1 to the score and level
     // pass score as an argument to the difficultyLevel function
-    if (player.y + 63 <= 0) {
-        player.x = 202.5;
-        player.y = 383;
+    if (this.y + 63 <= 0) {
+        this.x = 202.5;
+        this.y = 383;
 
         score++;
         gameLevel++;
