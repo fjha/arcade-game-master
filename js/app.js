@@ -115,16 +115,16 @@ Player.prototype.handleInput = function(keyPress, pause) {
     if (!pause || keyPress === "s") {
         switch (keyPress) {
             case 'left':
-                player.x -= player.speed;
+                this.x -= this.speed;
                 break;
             case 'right':
-                player.x += player.speed;
+                this.x += this.speed;
                 break;
             case 'up':
-                player.y -= player.speed - 20;
+                this.y -= this.speed - 20;
                 break;
             case 'down':
-                player.y += player.speed - 20;
+                this.y += this.speed - 20;
                 break;
             case 's':
                 pauseGame();
@@ -139,14 +139,14 @@ Player.prototype.handleInput = function(keyPress, pause) {
 
     // check if player runs into left, bottom, or right canvas walls
     // prevent player from moving beyond canvas wall boundaries
-    if (player.y > 383) {
-        player.y = 383;
+    if (this.y > 383) {
+        this.y = 383;
     }
-    if (player.x > 402.5) {
-        player.x = 402.5;
+    if (this.x > 402.5) {
+        this.x = 402.5;
     }
-    if (player.x < 2.5) {
-        player.x = 2.5;
+    if (this.x < 2.5) {
+        this.x = 2.5;
     }
 
 };
