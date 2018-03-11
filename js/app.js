@@ -90,7 +90,7 @@ var Player = function(x, y, speed) {
 Player.prototype = new Element();
 
 Player.prototype.update = function() {
-    player.checkWinner();
+    this.checkWinner();
 }
 
 
@@ -209,7 +209,7 @@ var difficultyLevel = function(numEnemies) {
 var allEnemies = [];
 var player = new Player(200, 383, 50);
 var score = 0;
-var gameLevel = 1;
+var gameLevel = 0;
 var scoreLevelDiv = document.createElement('div');
 var enemy = new Enemy(0, Math.random() * 180 + 50, Math.random() * 200);
 
