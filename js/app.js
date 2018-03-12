@@ -1,4 +1,5 @@
 // Element class for extend the render function to Player and Enemy classes;
+
 var Element = function (sprite, x, y) {
     this.sprite = sprite;
     this.x = (x || 0);
@@ -15,17 +16,17 @@ Element.prototype.render = function () {
 var Enemy = function(x, y, speed) {
     // Variables applied to each  instances go here,
     // we've provided one for you to get started
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
 
+    Element.call(this, 'images/enemy-bug.png', x, y );
+    this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+
 };
 
 // extend render method from element class
-Enemy.prototype = new Element();
+Enemy.prototype = Object.create(Element.prototype);
+Enemy.prototype.constructor = Enemy;
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -87,7 +88,7 @@ var Player = function(x, y, speed) {
 };
 
 // extend render method from element class
-Player.prototype = new Element();
+Player.prototype = Object.create(Element.prototype);
 
 Player.prototype.update = function() {
     this.checkWinner();
@@ -164,7 +165,7 @@ var displayScoreLevel = function(aScore, aLevel) {
 
 // Function to change the player
 var n = 0;
-var changePlayer = function() {
+Player.prototype.changePlayer = function() {
     n = (n + 1) % player.players.length;
     player.sprite = player.players[n];
 };
